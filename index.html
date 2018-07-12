@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style:none;
+	}
+	.box{
+		width: 800px;
+		
+		margin: 30px auto;
+		border:2px solid black;
+	}
+	.nav{
+		height: 80px;
+		line-height:80px;
+		border-bottom:2px solid black;
+	}
+	.nav li{
+		float: left;
+		padding: 0 30px;
+	}
+	.nav .active{
+		background-color:#ccc;
+	}
+	.content li{
+		height: 500px;
+		background-color:green;
+		color:#fff;
+		font-size:80px;
+		line-height:500px;
+		text-align: center;
+		display: none;
+	}
+	.content .show{
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	
+		<div class="box">
+			<ul class="nav" id="nav">
+				<li class="active">选项1</li>
+				<li>选项2</li>
+				<li>选项3</li>
+			</ul>
+
+			<ol class="content" id="content">
+				<li class="show">块1</li>
+				<li>块2</li>
+				<li>块3</li>
+			</ol>
+		</div>
+
+
+<script>
+	// 取的是导航的三个li 
+		var oNav = document.getElementById('nav');
+		var uli = oNav.getElementsByTagName('li');
+// 取的是内容的三个li 
+		var oContent = document.getElementById('content');
+		var oli = oContent.getElementsByTagName('li');
+
+			//给这三个元素添加事件
+		for(var i=0;i<uli.length;i++){
+			//自定义属性  索引
+			uli[i].index = i;
+
+
+			uli[i].onclick = function (){
+				//清空里面的class
+				for(var j=0;j<uli.length;j++){
+					uli[j].className = '';
+					oli[j].style.display = 'none';
+				}
+			
+				// 添加active这个class
+				this.className = 'active';
+					
+				oli[this.index].style.display = 'block';
+			}
+		}
+
+
+</script>
+
+
+</body>
+</html>
